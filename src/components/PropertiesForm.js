@@ -37,16 +37,6 @@ class PropertiesForm extends React.Component {
         console.log(this.state.formControls);
     };
 
-
-    // formSubmitHandler = () => {
-    //     const formData = {};
-    //     for (let formElementId in this.state.formControls) {
-    //         formData[formElementId] = this.state.formControls[formElementId].value;
-    //     }
-    //
-    //     console.dir(formData);
-    // }
-
     render() {
         return (
             <div>
@@ -60,9 +50,6 @@ class PropertiesForm extends React.Component {
                         <InputField name={"query.port"}
                                     onChange={this.changeHandler}/>
 
-                        <button onClick={this.formSubmitHandler}>
-                            Submit
-                        </button>
 
                         <InputField name={"generator-settings"} onChange={this.changeHandler}/>
                         <InputField name={"force-gamemode"} onChange={this.changeHandler}/>

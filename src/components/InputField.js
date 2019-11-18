@@ -24,11 +24,10 @@ const useStyles = theme => ({
     },
 });
 
-class PropertiesForm extends React.Component {
+class InputField extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: 'Please write an essay about your favorite DOM element.'
         };
 
     }
@@ -39,11 +38,14 @@ class PropertiesForm extends React.Component {
             <div>
                 <Grid container spacing={3}>
                     <Grid item xs={4}>
-                        <Paper className={classes.paper}><label>{this.props.label}</label></Paper>
+                        <Paper className={classes.paper}><label>{this.props.name}</label></Paper>
                     </Grid>
                     <Grid item xs={8}>
-                        <Paper className={classes.paper}><TextField id="standard" className={classes.textField}
-                                                                    label="Standard"/></Paper>
+                        <Paper className={classes.paper}><TextField className={classes.textField}
+                                                                    label={this.props.name}
+                                                                    name={this.props.name}
+                                                                    value={this.props.value}
+                                                                    onChange={this.props.onChange}/></Paper>
                     </Grid>
                 </Grid>
             </div>
@@ -51,4 +53,4 @@ class PropertiesForm extends React.Component {
     }
 }
 
-export default withStyles(useStyles)(PropertiesForm);
+export default withStyles(useStyles)(InputField);

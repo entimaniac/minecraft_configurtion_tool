@@ -1,6 +1,7 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import InputField from "./InputField";
+import Container from '@material-ui/core/Container';
 
 // https://medium.com/@agoiabeladeyemi/the-complete-guide-to-forms-in-react-d2ba93f32825
 
@@ -19,8 +20,6 @@ class PropertiesForm extends React.Component {
         const name = event.target.name;
         const value = event.target.value;
 
-        console.log(name);
-        console.log(value);
         this.setState({
             formControls: {
                 ...this.state.formControls,
@@ -34,23 +33,17 @@ class PropertiesForm extends React.Component {
 
     formSubmitHandler = event => {
         event.preventDefault();
-        console.log(this.state.formControls);
+        this.props.passData(this.state.formControls);
     };
 
     render() {
         return (
-            <div>
-                <Grid container spacing={3}>
+            <Container maxWidth="sm">
+                <Grid container>
                     <form>
-
-                        <InputField name="spawn-protection"
-                                    onChange={this.changeHandler}/>
-                        <InputField name={"max-tick-time"}
-                                    onChange={this.changeHandler}/>
-                        <InputField name={"query.port"}
-                                    onChange={this.changeHandler}/>
-
-
+                        <InputField name={"spawn-protection"} onChange={this.changeHandler}/>
+                        <InputField name={"max-tick-time"} onChange={this.changeHandler}/>
+                        <InputField name={"query.port"} onChange={this.changeHandler}/>
                         <InputField name={"generator-settings"} onChange={this.changeHandler}/>
                         <InputField name={"force-gamemode"} onChange={this.changeHandler}/>
                         <InputField name={"allow-nether"} onChange={this.changeHandler}/>
@@ -92,13 +85,12 @@ class PropertiesForm extends React.Component {
                         <InputField name={"prevent-proxy-connections"} onChange={this.changeHandler}/>
                         <InputField name={"enable-rcon"} onChange={this.changeHandler}/>
                         <InputField name={"motd"} onChange={this.changeHandler}/>
-
                         <button onClick={this.formSubmitHandler}>
                             Submit
                         </button>
                     </form>
                 </Grid>
-            </div>
+            </Container>
         );
     }
 }

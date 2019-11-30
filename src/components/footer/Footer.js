@@ -18,10 +18,6 @@ const styles = theme => ({
 });
 
 class Footer extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const {classes} = this.props;
 

@@ -17,6 +17,9 @@ const useStyles = theme => ({
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
     },
+    input: {
+        whiteSpace: 'pre;',
+    }
 });
 
 class ResultsModal extends React.Component {
@@ -41,15 +44,18 @@ class ResultsModal extends React.Component {
                         <div className={classes.paper}>
                             <h2>Finished!</h2>
                             <p>Copy your new file contents below:</p>
-                            <pre>{JSON.stringify(this.props.fileData, null, 2)}</pre>
                             <TextField
                                 placeholder="MultiLine with rows: 2 and rowsMax: 4"
                                 multiline={true}
                                 rows={10}
-                                rowsMax={15}
+                                rowwsMax={15}
                                 InputProps={{
                                     readOnly: true,
+                                    classes: {input: this.props.classes['input']},
                                 }}
+                                value={this.props.formattedProperties}
+                                // InputProps={{ classes: {input: this.props.classes['input']} }} />
+
                             />
                         </div>
                     </Fade>

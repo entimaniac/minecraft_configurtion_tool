@@ -6,7 +6,7 @@ class Properties extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            fileData: {},
+            formData: {},
             open: false
         };
         this.handleClose = this.handleClose.bind(this);
@@ -16,9 +16,24 @@ class Properties extends React.Component {
     passData = (data) => {
         console.log(data);
         this.setState({
-            fileData: data,
+            formData: data,
             open: true
         });
+        this.createOutput(data);
+    };
+
+    createOutput = (data) => {
+        let output = '';
+        for (let key of Object.keys(data)) {
+            output += key;
+            output += '=';
+            output += data[key].value;
+            output += '\n';
+        }
+
+        this.setState({formattedProperties: output});
+        console.log(output);
+
     };
 
     handleOpen = () => {
@@ -34,7 +49,9 @@ class Properties extends React.Component {
         return (
             <div>
                 <PropertiesForm passData={this.passData}/>
-                <ResultsModal fileData={this.state.fileData} open={this.state.open} handleOpen={this.handleOpen}
+                <ResultsModal formattedProperties={this.state.formattedProperties} fileData={this.state.formData}
+                              open={this.state.open}
+                              handleOpen={this.handleOpen}
                               handleClose={this.handleClose}/>
             </div>
         );

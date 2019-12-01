@@ -26,7 +26,7 @@ class Header extends Component {
                 <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
                     <Toolbar className={classes.toolbar}>
                         <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
-                            Segment Preparation & Operations Tool
+                            Minecraft Properties File Generation Tool
                         </Typography>
                     </Toolbar>
                 </AppBar>

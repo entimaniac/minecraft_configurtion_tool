@@ -48,7 +48,7 @@ class ResultsModal extends React.Component {
                                 placeholder="MultiLine with rows: 2 and rowsMax: 4"
                                 multiline={true}
                                 rows={10}
-                                rowwsMax={15}
+                                rowwsmax={15}
                                 InputProps={{
                                     readOnly: true,
                                     classes: {input: this.props.classes['input']},

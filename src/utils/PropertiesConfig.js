@@ -1,4 +1,4 @@
-const propertiesConfig = [
+const properties = [
     {
         name: 'spawn-protection',
         defaultValue: '16',
@@ -221,4 +221,4 @@ const propertiesConfig = [
     }
 ];
 
-module.exports = { variableName: "variableValue" };
+module.exports = { properties: properties };

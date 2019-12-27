@@ -1,222 +1,222 @@
 const properties = [
     {
         name: 'spawn-protection',
-        defaultValue: '16',
+        value: '16',
         inputType: 'text'
     },
     {
         name: 'max-tick-time',
-        defaultValue: '60000',
+        value: '60000',
         inputType: 'text'
     },
     {
         name: 'query.port',
-        defaultValue: '25565',
+        value: '25565',
         inputType: 'text'
     },
     {
         name: 'generator-settings',
-        defaultValue: '',
+        value: '',
         inputType: 'text'
     },
     {
         name: 'force-gamemode',
-        defaultValue: 'false',
+        value: 'false',
         inputType: 'text'
     },
     {
         name: 'allow-nether',
-        defaultValue: 'true',
+        value: 'true',
         inputType: 'text'
     },
     {
         name: 'enforce-whitelist',
-        defaultValue: 'false',
+        value: 'false',
         inputType: 'text'
     },
     {
         name: 'gamemode',
-        defaultValue: 'survival',
+        value: 'survival',
         inputType: 'text'
     },
     {
         name: 'broadcast-console-to-ops',
-        defaultValue: 'true',
+        value: 'true',
         inputType: 'text'
     },
     {
         name: 'enable-query',
-        defaultValue: 'false',
+        value: 'false',
         inputType: 'text'
     },
     {
         name: 'player-idle-timeout',
-        defaultValue: '0',
+        value: '0',
         inputType: 'text'
     },
     {
         name: 'difficulty',
-        defaultValue: 'easy',
+        value: 'easy',
         inputType: 'text'
     },
     {
         name: 'spawn-monsters',
-        defaultValue: 'true',
+        value: 'true',
         inputType: 'text'
     },
     {
         name: 'broadcast-rcon-to-ops',
-        defaultValue: 'true',
+        value: 'true',
         inputType: 'text'
     },
     {
         name: 'op-permission-level',
-        defaultValue: '4',
+        value: '4',
         inputType: 'text'
     },
     {
         name: 'pvp',
-        defaultValue: 'true',
+        value: 'true',
         inputType: 'text'
     },
     {
         name: 'snooper-enabled',
-        defaultValue: 'true',
+        value: 'true',
         inputType: 'text'
     },
     {
         name: 'level-type',
-        defaultValue: 'default',
+        value: 'default',
         inputType: 'text'
     },
     {
         name: 'hardcore',
-        defaultValue: 'false',
+        value: 'false',
         inputType: 'text'
     },
     {
         name: 'enable-command-block',
-        defaultValue: 'false',
+        value: 'false',
         inputType: 'text'
     },
     {
         name: 'max-players',
-        defaultValue: '20',
+        value: '20',
         inputType: 'text'
     },
     {
         name: 'network-compression-threshold',
-        defaultValue: '256',
+        value: '256',
         inputType: 'text'
     },
     {
         name: 'resource-pack-sha1',
-        defaultValue: '',
+        value: '',
         inputType: 'text'
     },
     {
         name: 'max-world-size',
-        defaultValue: '29999984',
+        value: '29999984',
         inputType: 'text'
     },
     {
         name: 'function-permission-level',
-        defaultValue: '2',
+        value: '2',
         inputType: 'text'
     },
     {
         name: 'rcon.port',
-        defaultValue: '25575',
+        value: '25575',
         inputType: 'text'
     },
     {
         name: 'server-port',
-        defaultValue: '25565',
+        value: '25565',
         inputType: 'text'
     },
     {
         name: 'server-ip',
-        defaultValue: '',
+        value: '',
         inputType: 'text'
     },
     {
         name: 'spawn-npcs',
-        defaultValue: 'true',
+        value: 'true',
         inputType: 'text'
     },
     {
         name: 'allow-flight',
-        defaultValue: 'false',
+        value: 'false',
         inputType: 'text'
     },
     {
         name: 'level-name',
-        defaultValue: 'world',
+        value: 'world',
         inputType: 'text'
     },
     {
         name: 'view-distance',
-        defaultValue: '10',
+        value: '10',
         inputType: 'text'
     },
     {
         name: 'resource-pack',
-        defaultValue: '',
+        value: '',
         inputType: 'text'
     },
     {
         name: 'spawn-animals',
-        defaultValue: 'true',
+        value: 'true',
         inputType: 'text'
     },
     {
         name: 'white-list',
-        defaultValue: 'false',
+        value: 'false',
         inputType: 'text'
     },
     {
         name: 'rcon.password',
-        defaultValue: '',
+        value: '',
         inputType: 'text'
     },
     {
         name: 'generate-structures',
-        defaultValue: 'true',
+        value: 'true',
         inputType: 'text'
     },
     {
         name: 'max-build-height',
-        defaultValue: '256',
+        value: '256',
         inputType: 'text'
     },
     {
         name: 'online-mode',
-        defaultValue: 'true',
+        value: 'true',
         inputType: 'text'
     },
     {
         name: 'level-seed',
-        defaultValue: '',
+        value: '',
         inputType: 'text'
     },
     {
         name: 'use-native-transport',
-        defaultValue: 'true',
+        value: 'true',
         inputType: 'text'
     },
     {
         name: 'prevent-proxy-connections',
-        defaultValue: 'false',
+        value: 'false',
         inputType: 'text'
     },
     {
         name: 'enable-rcon',
-        defaultValue: 'false',
+        value: 'false',
         inputType: 'text'
     },
     {
         name: 'motd',
-        defaultValue: 'A Minecraft Server',
+        value: 'A Minecraft Server',
         inputType: 'text'
     }
 ];

@@ -25,7 +25,7 @@ class Properties extends React.Component {
     createOutput = (data) => {
         let output = '';
         for (let key of Object.keys(data)) {
-            output += key;
+            output += data[key].name;
             output += '=';
             output += data[key].value;
             output += '\n';

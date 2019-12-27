@@ -13,8 +13,7 @@ const useStyles = theme => ({
 class InputField extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
-
+        this.state = {value:this.props.value};
     }
 
     render() {

@@ -27,7 +27,7 @@ const useStyles = theme => ({
     }
 });
 
-class AttemptTwo extends React.Component {
+class PropertiesForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -262,8 +262,7 @@ class AttemptTwo extends React.Component {
     render() {
         const {classes} = this.props;
 
-        let items = [];
-        items = Object.keys(this.state.properties).map((key, index) =>
+        let items = Object.keys(this.state.properties).map((key, index) =>
             <div key={index}>
                 <TextField
                     fullWidth
@@ -319,4 +318,4 @@ class AttemptTwo extends React.Component {
     }
 }
 
-export default withStyles(useStyles)(AttemptTwo);
+export default withStyles(useStyles)(PropertiesForm);

@@ -320,7 +320,7 @@ class PropertiesForm extends React.Component {
                                 value={this.state.formattedProperties}
                             />
                             <div>
-                                <button onClick={this.downloadTxtFile}>Download txt</button>
+                                <button onClick={this.downloadTxtFile}>Export File</button>
                             </div>
                         </div>
                     </Fade>

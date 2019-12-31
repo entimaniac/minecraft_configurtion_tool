@@ -216,20 +216,42 @@ class PropertiesForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleClose = this.handleClose.bind(this);
         this.createOutput = this.createOutput.bind(this);
+        this.fileUpload = this.fileUpload.bind(this);
+    }
+
+    fileUpload(event) {
+        let file = event.target.files[0];
+        let reader = new FileReader();
+        let propCopy = this.state.properties;
+        const scope = this;
+        reader.onload = function (event) {
+            let contents = event.target.result;
+            let lines = contents.split('\n');
+            for (let line of lines) {
+                let trimmed = line.trim();
+                if (trimmed === '' || trimmed[0] === '#') {
+                    continue;
+                }
+                let splitLine = line.split('=');
+                let updatedProperty = {...scope.state.properties[splitLine[0]]};
+                updatedProperty.value = splitLine[1];
+                propCopy[splitLine[0]] = updatedProperty;
+            }
+            scope.setState({
+                properties: propCopy
+            });
+        };
+        reader.readAsText(file);
     }
 
     handleChange(event) {
         let name = event.target.name;
         let value = event.target.value;
-        let updatedProperty = {...this.state.properties[name]};
-        updatedProperty.value = value;
-        this.setState(prevState => ({
-            ...prevState,
-            properties: {
-                ...prevState.properties,
-                [name]: updatedProperty
-            }
-        }));
+        let propCopy = this.state.properties;
+        propCopy[name].value = value;
+        this.setState({
+            properties: propCopy
+        });
     }
 
     handleSubmit(event) {
@@ -253,7 +275,6 @@ class PropertiesForm extends React.Component {
     handleOpen = () => {
         this.setState({open: true});
     };
-
 
     handleClose = () => {
         this.setState({open: false});
@@ -289,6 +310,7 @@ class PropertiesForm extends React.Component {
         return (
             <div>
                 <div className={classes.form}>
+                    <input type="file" name="file" onChange={this.fileUpload}/>
                     <form onSubmit={this.handleSubmit}>
                         {items}
                         <div>

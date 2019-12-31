@@ -247,10 +247,7 @@ class AttemptTwo extends React.Component {
             output += properties[key].value;
             output += '\n';
         }
-
         this.setState({formattedProperties: output});
-        console.log(output);
-
     };
 
     handleOpen = () => {
@@ -270,6 +267,7 @@ class AttemptTwo extends React.Component {
             <div key={index}>
                 <TextField
                     fullWidth
+                    margin="normal"
                     id={key}
                     label={key}
                     placeholder={key}
@@ -282,42 +280,40 @@ class AttemptTwo extends React.Component {
 
         return (
             <div>
-                <div>
-                    <div className={classes.form}>
-                        <form onSubmit={this.handleSubmit}>
-                            {items}
-                            <div>
-                                <input type="submit" value=" Submit"/>
-                            </div>
-                        </form>
-                    </div>
-                    <Modal
-                        className={classes.modal}
-                        open={this.state.open}
-                        onClose={this.handleClose}
-                        closeAfterTransition
-                        BackdropComponent={Backdrop}
-                        BackdropProps={{
-                            timeout: 500,
-                        }}>
-                        <Fade in={this.state.open}>
-                            <div className={classes.paper}>
-                                <h2>Finished!</h2>
-                                <p>Copy your new file contents below:</p>
-                                <TextField
-                                    multiline={true}
-                                    rows={10}
-                                    rowsmax={15}
-                                    InputProps={{
-                                        readOnly: true,
-                                        classes: {input: this.props.classes['input']},
-                                    }}
-                                    value={this.state.formattedProperties}
-                                />
-                            </div>
-                        </Fade>
-                    </Modal>
+                <div className={classes.form}>
+                    <form onSubmit={this.handleSubmit}>
+                        {items}
+                        <div>
+                            <input type="submit" value=" Submit"/>
+                        </div>
+                    </form>
                 </div>
+                <Modal
+                    className={classes.modal}
+                    open={this.state.open}
+                    onClose={this.handleClose}
+                    closeAfterTransition
+                    BackdropComponent={Backdrop}
+                    BackdropProps={{
+                        timeout: 500,
+                    }}>
+                    <Fade in={this.state.open}>
+                        <div className={classes.paper}>
+                            <h2>Finished!</h2>
+                            <p>Copy your new file contents below:</p>
+                            <TextField
+                                multiline={true}
+                                rows={10}
+                                rowsmax={15}
+                                InputProps={{
+                                    readOnly: true,
+                                    classes: {input: this.props.classes['input']},
+                                }}
+                                value={this.state.formattedProperties}
+                            />
+                        </div>
+                    </Fade>
+                </Modal>
             </div>
         );
     }

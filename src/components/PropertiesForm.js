@@ -259,6 +259,15 @@ class PropertiesForm extends React.Component {
         this.setState({open: false});
     };
 
+    downloadTxtFile = () => {
+        const element = document.createElement("a");
+        const file = new Blob([this.state.formattedProperties], {type: 'text/plain'});
+        element.href = URL.createObjectURL(file);
+        element.download = "server.properties";
+        document.body.appendChild(element); // Required for this to work in FireFox
+        element.click();
+    };
+
     render() {
         const {classes} = this.props;
 
@@ -310,6 +319,9 @@ class PropertiesForm extends React.Component {
                                 }}
                                 value={this.state.formattedProperties}
                             />
+                            <div>
+                                <button onClick={this.downloadTxtFile}>Export File</button>
+                            </div>
                         </div>
                     </Fade>
                 </Modal>

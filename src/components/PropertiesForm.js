@@ -388,22 +388,6 @@ class PropertiesForm extends React.Component {
 
         });
 
-
-        // let items = Object.keys(this.state.properties).map((key, index) =>
-        //     <div key={index}>
-        //         <TextField
-        //             fullWidth
-        //             margin="normal"
-        //             id={key}
-        //             label={key}
-        //             placeholder={key}
-        //             name={key}
-        //             value={this.state.properties[key].value}
-        //             onChange={this.handleChange}
-        //         />
-        //     </div>
-        // );
-
         return (
             <div>
                 <div className={classes.form}>

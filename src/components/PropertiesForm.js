@@ -4,6 +4,10 @@ import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import {withStyles} from "@material-ui/core/styles";
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import InputLabel from "@material-ui/core/InputLabel";
 
 const useStyles = theme => ({
     modal: {
@@ -51,26 +55,38 @@ class PropertiesForm extends React.Component {
                 'force-gamemode': {
                     name: 'force-gamemode',
                     value: 'false',
+                    type: 'select',
+                    options: ['true', 'false']
                 },
                 'allow-nether': {
                     name: 'allow-nether',
                     value: 'true',
+                    type: 'select',
+                    options: ['true', 'false']
                 },
                 'enforce-whitelist': {
                     name: 'enforce-whitelist',
                     value: 'false',
+                    type: 'select',
+                    options: ['true', 'false']
                 },
                 'gamemode': {
                     name: 'gamemode',
                     value: 'survival',
+                    type: 'select',
+                    options: ['survival', 'creative', 'adventure', 'spectator']
                 },
                 'broadcast-console-to-ops': {
                     name: 'broadcast-console-to-ops',
                     value: 'true',
+                    type: 'select',
+                    options: ['true', 'false']
                 },
                 'enable-query': {
                     name: 'enable-query',
                     value: 'false',
+                    type: 'select',
+                    options: ['true', 'false']
                 },
                 'player-idle-timeout': {
                     name: 'player-idle-timeout',
@@ -79,26 +95,38 @@ class PropertiesForm extends React.Component {
                 'difficulty': {
                     name: 'difficulty',
                     value: 'easy',
+                    type: 'select',
+                    options: ['peaceful', 'easy', 'normal', 'hard']
                 },
                 'spawn-monsters': {
                     name: 'spawn-monsters',
                     value: 'true',
+                    type: 'select',
+                    options: ['true', 'false']
                 },
                 'broadcast-rcon-to-ops': {
                     name: 'broadcast-rcon-to-ops',
                     value: 'true',
+                    type: 'select',
+                    options: ['true', 'false']
                 },
                 'op-permission-level': {
                     name: 'op-permission-level',
                     value: '4',
+                    type: 'select',
+                    options: ['1', '2', '3', '4']
                 },
                 'pvp': {
                     name: 'pvp',
                     value: 'true',
+                    type: 'select',
+                    options: ['true', 'false']
                 },
                 'snooper-enabled': {
                     name: 'snooper-enabled',
                     value: 'true',
+                    type: 'select',
+                    options: ['true', 'false']
                 },
                 'level-type': {
                     name: 'level-type',
@@ -107,10 +135,14 @@ class PropertiesForm extends React.Component {
                 'hardcore': {
                     name: 'hardcore',
                     value: 'false',
+                    type: 'select',
+                    options: ['true', 'false']
                 },
                 'enable-command-block': {
                     name: 'enable-command-block',
                     value: 'false',
+                    type: 'select',
+                    options: ['true', 'false']
                 },
                 'max-players': {
                     name: 'max-players',
@@ -131,6 +163,8 @@ class PropertiesForm extends React.Component {
                 'function-permission-level': {
                     name: 'function-permission-level',
                     value: '2',
+                    type: 'select',
+                    options: ['1', '2', '3', '4']
                 },
                 'rcon.port': {
                     name: 'rcon.port',
@@ -147,11 +181,16 @@ class PropertiesForm extends React.Component {
                 'spawn-npcs': {
                     name: 'spawn-npcs',
                     value: 'true',
+                    type: 'select',
+                    options: ['true', 'false']
                 },
                 'allow-flight': {
                     name: 'allow-flight',
                     value: 'false',
-                },
+                    type: 'select',
+                    options: ['true', 'false']
+                }
+                ,
                 'level-name': {
                     name: 'level-name',
                     value: 'world',
@@ -167,10 +206,14 @@ class PropertiesForm extends React.Component {
                 'spawn-animals': {
                     name: 'spawn-animals',
                     value: 'true',
+                    type: 'select',
+                    options: ['true', 'false']
                 },
                 'white-list': {
                     name: 'white-list',
                     value: 'false',
+                    type: 'select',
+                    options: ['true', 'false']
                 },
                 'rcon.password': {
                     name: 'rcon.password',
@@ -179,6 +222,8 @@ class PropertiesForm extends React.Component {
                 'generate-structures': {
                     name: 'generate-structures',
                     value: 'true',
+                    type: 'select',
+                    options: ['true', 'false']
                 },
                 'max-build-height': {
                     name: 'max-build-height',
@@ -187,6 +232,8 @@ class PropertiesForm extends React.Component {
                 'online-mode': {
                     name: 'online-mode',
                     value: 'true',
+                    type: 'select',
+                    options: ['true', 'false']
                 },
                 'level-seed': {
                     name: 'level-seed',
@@ -195,14 +242,20 @@ class PropertiesForm extends React.Component {
                 'use-native-transport': {
                     name: 'use-native-transport',
                     value: 'true',
+                    type: 'select',
+                    options: ['true', 'false']
                 },
                 'prevent-proxy-connections': {
                     name: 'prevent-proxy-connections',
                     value: 'false',
+                    type: 'select',
+                    options: ['true', 'false']
                 },
                 'enable-rcon': {
                     name: 'enable-rcon',
                     value: 'false',
+                    type: 'select',
+                    options: ['true', 'false']
                 },
                 'motd': {
                     name: 'motd',
@@ -247,6 +300,8 @@ class PropertiesForm extends React.Component {
     handleChange(event) {
         let name = event.target.name;
         let value = event.target.value;
+        console.log(name);
+        console.log(value);
         let propCopy = this.state.properties;
         propCopy[name].value = value;
         this.setState({
@@ -292,20 +347,46 @@ class PropertiesForm extends React.Component {
     render() {
         const {classes} = this.props;
 
-        let items = Object.keys(this.state.properties).map((key, index) =>
-            <div key={index}>
-                <TextField
-                    fullWidth
-                    margin="normal"
-                    id={key}
-                    label={key}
-                    placeholder={key}
-                    name={key}
-                    value={this.state.properties[key].value}
-                    onChange={this.handleChange}
-                />
-            </div>
-        );
+
+        let items = Object.keys(this.state.properties).map((key, index) => {
+            if (this.state.properties[key].type === 'select') {
+                let options = this.state.properties[key].options.map((item, index) => {
+                    return <MenuItem key={index} value={item}>{item}</MenuItem>
+                });
+
+                return (
+                    <div key={index}>
+                        <FormControl
+                            fullWidth
+                            margin="normal">
+                            <InputLabel>{key}</InputLabel>
+                            <Select
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                name={key}
+                                value={this.state.properties[key].value}
+                                onChange={this.handleChange}
+                            >
+                                {options}
+                            </Select>
+                        </FormControl>
+                    </div>
+                )
+            } else return (
+                <div key={index}>
+                    <TextField
+                        fullWidth
+                        margin="normal"
+                        id={key}
+                        label={key}
+                        placeholder={key}
+                        name={key}
+                        value={this.state.properties[key].value}
+                        onChange={this.handleChange}
+                    />
+                </div>);
+
+        });
 
         return (
             <div>

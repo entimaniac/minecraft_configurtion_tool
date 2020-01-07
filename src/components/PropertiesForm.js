@@ -39,14 +39,22 @@ class PropertiesForm extends React.Component {
                 'spawn-protection': {
                     name: 'spawn-protection',
                     value: '16',
+                    type: 'number',
+                    minimum: 0,
+                    description:'Determines the radius of the spawn protection as 2x+1. Setting this to 0 does not disable spawn protection, but protects the single block at the spawn point. 1 protects a 3×3 area centered on the spawn point. 2 protects 5×5, 3 protects 7×7, etc. This option is not generated on the first server start and appears when the first player joins. If there are no ops set on the server, the spawn protection is disabled automatically.'
                 },
                 'max-tick-time': {
                     name: 'max-tick-time',
                     value: '60000',
+                    type: 'number',
+                    minimum: -1,
                 },
                 'query.port': {
                     name: 'query.port',
                     value: '25565',
+                    type: 'number',
+                    minimum: 1,
+                    maximum: 65534,
                 },
                 'generator-settings': {
                     name: 'generator-settings',
@@ -300,8 +308,6 @@ class PropertiesForm extends React.Component {
     handleChange(event) {
         let name = event.target.name;
         let value = event.target.value;
-        console.log(name);
-        console.log(value);
         let propCopy = this.state.properties;
         propCopy[name].value = value;
         this.setState({
@@ -350,10 +356,10 @@ class PropertiesForm extends React.Component {
 
         let items = Object.keys(this.state.properties).map((key, index) => {
             if (this.state.properties[key].type === 'select') {
+                // select inputs
                 let options = this.state.properties[key].options.map((item, index) => {
                     return <MenuItem key={index} value={item}>{item}</MenuItem>
                 });
-
                 return (
                     <div key={index}>
                         <FormControl
@@ -381,10 +387,17 @@ class PropertiesForm extends React.Component {
                         label={key}
                         placeholder={key}
                         name={key}
+                        inputProps={{
+                            min: this.state.properties[key].minimum,
+                            max: this.state.properties[key].maximum,
+                            step: "1"
+                        }}
+                        type={this.state.properties[key].type}
                         value={this.state.properties[key].value}
                         onChange={this.handleChange}
                     />
                 </div>);
+            ;
 
         });
 

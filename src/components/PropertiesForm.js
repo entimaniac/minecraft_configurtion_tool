@@ -39,14 +39,22 @@ class PropertiesForm extends React.Component {
                 'spawn-protection': {
                     name: 'spawn-protection',
                     value: '16',
+                    type: 'number',
+                    minimum: 0,
+                    description: 'Determines the radius of the spawn protection as 2x+1. Setting this to 0 does not disable spawn protection, but protects the single block at the spawn point. 1 protects a 3×3 area centered on the spawn point. 2 protects 5×5, 3 protects 7×7, etc. This option is not generated on the first server start and appears when the first player joins. If there are no ops set on the server, the spawn protection is disabled automatically.'
                 },
                 'max-tick-time': {
                     name: 'max-tick-time',
                     value: '60000',
+                    type: 'number',
+                    minimum: -1,
                 },
                 'query.port': {
                     name: 'query.port',
                     value: '25565',
+                    type: 'number',
+                    minimum: 1,
+                    maximum: 65534,
                 },
                 'generator-settings': {
                     name: 'generator-settings',
@@ -90,7 +98,9 @@ class PropertiesForm extends React.Component {
                 },
                 'player-idle-timeout': {
                     name: 'player-idle-timeout',
-                    value: '0',
+                    value: 0,
+                    type: 'number',
+                    minimum: 0,
                 },
                 'difficulty': {
                     name: 'difficulty',
@@ -131,6 +141,8 @@ class PropertiesForm extends React.Component {
                 'level-type': {
                     name: 'level-type',
                     value: 'default',
+                    type: 'select',
+                    options: ['flat', 'legacy', 'default']
                 },
                 'hardcore': {
                     name: 'hardcore',
@@ -146,11 +158,15 @@ class PropertiesForm extends React.Component {
                 },
                 'max-players': {
                     name: 'max-players',
-                    value: '20',
+                    value: 20,
+                    type: 'number',
+                    minimum: 0,
                 },
                 'network-compression-threshold': {
                     name: 'network-compression-threshold',
-                    value: '256',
+                    value: 256,
+                    type: 'number',
+                    minimum: -1,
                 },
                 'resource-pack-sha1': {
                     name: 'resource-pack-sha1',
@@ -158,7 +174,10 @@ class PropertiesForm extends React.Component {
                 },
                 'max-world-size': {
                     name: 'max-world-size',
-                    value: '29999984',
+                    value: 29999984,
+                    type: 'number',
+                    minimum: 1,
+                    maximum: 29999984,
                 },
                 'function-permission-level': {
                     name: 'function-permission-level',
@@ -168,11 +187,17 @@ class PropertiesForm extends React.Component {
                 },
                 'rcon.port': {
                     name: 'rcon.port',
-                    value: '25575',
+                    value: 25575,
+                    type: 'number',
+                    minimum: 1,
+                    maximum: 65534,
                 },
                 'server-port': {
                     name: 'server-port',
-                    value: '25565',
+                    value: 25565,
+                    type: 'number',
+                    minimum: 1,
+                    maximum: 65534,
                 },
                 'server-ip': {
                     name: 'server-ip',
@@ -197,7 +222,10 @@ class PropertiesForm extends React.Component {
                 },
                 'view-distance': {
                     name: 'view-distance',
-                    value: '10',
+                    value: 10,
+                    type: 'number',
+                    minimum: 3,
+                    maximum: 32,
                 },
                 'resource-pack': {
                     name: 'resource-pack',
@@ -227,7 +255,9 @@ class PropertiesForm extends React.Component {
                 },
                 'max-build-height': {
                     name: 'max-build-height',
-                    value: '256',
+                    value: 256,
+                    type: 'number',
+                    minimum: 0,
                 },
                 'online-mode': {
                     name: 'online-mode',
@@ -300,8 +330,6 @@ class PropertiesForm extends React.Component {
     handleChange(event) {
         let name = event.target.name;
         let value = event.target.value;
-        console.log(name);
-        console.log(value);
         let propCopy = this.state.properties;
         propCopy[name].value = value;
         this.setState({
@@ -350,10 +378,10 @@ class PropertiesForm extends React.Component {
 
         let items = Object.keys(this.state.properties).map((key, index) => {
             if (this.state.properties[key].type === 'select') {
+                // select inputs
                 let options = this.state.properties[key].options.map((item, index) => {
                     return <MenuItem key={index} value={item}>{item}</MenuItem>
                 });
-
                 return (
                     <div key={index}>
                         <FormControl
@@ -381,11 +409,16 @@ class PropertiesForm extends React.Component {
                         label={key}
                         placeholder={key}
                         name={key}
+                        inputProps={{
+                            min: this.state.properties[key].minimum,
+                            max: this.state.properties[key].maximum,
+                            step: "1"
+                        }}
+                        type={this.state.properties[key].type}
                         value={this.state.properties[key].value}
                         onChange={this.handleChange}
                     />
                 </div>);
-
         });
 
         return (
